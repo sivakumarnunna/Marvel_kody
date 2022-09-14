@@ -24,4 +24,4 @@ Feature: marvel characters rest api testing
      Then get the number of comics
      When I login to page UI "https://www.marvel.com/comics/characters/1010699/aaron_stack"
      Then verify the number of comics in UI
-     
+     #

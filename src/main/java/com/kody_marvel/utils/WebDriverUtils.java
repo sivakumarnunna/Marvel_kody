@@ -1,8 +1,5 @@
 package com.kody_marvel.utils;
 
-import java.io.FileInputStream;
-import java.time.Duration;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -13,16 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class WebDriverUtils {
-	
-
-	
 	public static  Logger logger = LogManager.getLogger(WebDriverUtils.class);
-
-	
 	public static WebDriver driver = null;
-	
-	static {
-		
+	public static void lauchBrowser() {
 		switch (ApplicationConstants.BROWSER_TYPE) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "Driver/chromedriver.exe");	
@@ -42,17 +32,6 @@ public class WebDriverUtils {
 
 			break;
 		}
-		
 		logger.info("Browser is :: "+ApplicationConstants.BROWSER_TYPE);
-		
-		
-		
 	}
-	
-	
-
-
-	
-	
-
 }

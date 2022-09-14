@@ -20,6 +20,7 @@ import com.kody_marvel.model.Root;
 import com.kody_marvel.utils.RestUtils;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -112,18 +113,18 @@ public class MarvelCharacterStep extends RestUtils {
 		
 		ArrayList<Result> results = root.getData().getResults();
 		this.availablecomics = results.get(0).getComics().getAvailable();
-		System.out.println("Total available comics.."+this.availablecomics);
 		return this.availablecomics;
 		
 	}
 	
 	@When("I login to page UI {string}")
 	public void i_login_to_page_ui(String url) {
+		lauchBrowser();
 		driver.get(url);
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[@data-filtercounter='browse']")));
 		this.uimessage = driver.findElement(By.xpath("//span[@data-filtercounter='browse']")).getText();
-		
+		driver.quit();
 	}
 
 	@Then("verify the number of comics in UI")
@@ -131,7 +132,12 @@ public class MarvelCharacterStep extends RestUtils {
 		
 		Assert.assertEquals(this.uimessage.contains(this.availablecomics+" RESULTS"),true);
 	}
-
+	
+ @After
+ public void closeBrowser() {
+	 
+	 
+ }
 
 
 }

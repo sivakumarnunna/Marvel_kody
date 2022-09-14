@@ -35,12 +35,10 @@ public class ApplicationConstants {
 		try {
 			properties.load(new FileInputStream("src\\test\\resources\\properties\\applicationundertest.properties"));
 			BASE_URL = properties.getProperty("baseUri");
-			SOT_PATH = properties.getProperty("sotpath");
 			PUBLIC_KEY = properties.getProperty("publickey");
 			PRIVATE_KEY = properties.getProperty("privatekey");
 			BROWSER_TYPE= properties.getProperty("browsertype");
 			logger.info("Base URL :::" + BASE_URL);
-			logger.info("SOT files path :::" + SOT_PATH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
